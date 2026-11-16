@@ -1,0 +1,13 @@
+app:
+  version: 1.0
+  profiles:
+    active: local
+  security:
+    username: ${APP_AUTH_USER:admin}
+    password: ${APP_AUTH_PASSWORD:admin123}
+  cors:
+    allowed-origins: ${APP_CORS_ORIGINS:http://localhost:3000,http://localhost:5173}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
