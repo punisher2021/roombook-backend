@@ -6,8 +6,14 @@ spring:
     password:
   flyway:
     enabled: true
+  h2:
+    console:
+      enabled: false
 
 app:
   security:
     username: admin
     password: admin123
+    jwt:
+      secret: test-jwt-secret-key-for-integration-tests-32bytes
+      expiration-seconds: 3600
