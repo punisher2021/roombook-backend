@@ -53,5 +53,21 @@ public class AuthControllerIntegrationTest {
                 .andExpect(jsonPath("$.code").value("INVALID_CREDENTIALS"));
     }
 
+    @Test
+    void shouldRejectMalformedBearerTokenWith401() throws Exception {
+        String roomBody = """
+                {
+                  "name": "Sala Invalid Token",
+                  "capacity": 6,
+                  "location": "Planta 1"
+                }
+                """;
 
+        mockMvc.perform(post("/api/v1/rooms")
+                        .header("Authorization", "Bearer not-a-valid-jwt-token")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(roomBody))
+                .andExpect(status().isUnauthorized())
+                .andExpect(jsonPath("$.code").value("UNAUTHORIZED"));
+    }
 }
