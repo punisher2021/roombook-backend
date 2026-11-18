@@ -1,7 +1,7 @@
 app:
   version: 1.0
   profiles:
-    active: local
+    active: dev
   security:
     username: ${APP_AUTH_USER:admin}
     password: ${APP_AUTH_PASSWORD:admin123}
